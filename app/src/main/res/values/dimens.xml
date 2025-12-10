@@ -1,0 +1,30 @@
+<resources >
+
+    <dimen name="min_banner_height">56dp</dimen>
+
+    <!-- margin, padding, border-->
+    <dimen name="space_tiny">4dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+    <dimen name="space_semi_small">12dp</dimen>
+    <dimen name="space_normal">16dp</dimen>
+    <dimen name="space_semi_medium">20dp</dimen>
+    <dimen name="space_medium">24dp</dimen>
+    <dimen name="space_large">28dp</dimen>
+    <dimen name="space_big">32dp</dimen>
+
+    <!--    button-->
+    <dimen name="button_size_normal">48dp</dimen>
+    <dimen name="button_size_medium">52dp</dimen>
+
+    <!--    text size-->
+    <dimen name="text_size_tiny">12.00sp</dimen>
+    <dimen name="text_size_small">13.00sp</dimen>
+    <dimen name="text_size_normal">14.00sp</dimen>
+    <dimen name="text_size_medium">18.00sp</dimen>
+    <dimen name="text_size_semi_large">20.00sp</dimen>
+    <dimen name="text_size_large">22.00sp</dimen>
+    <dimen name="text_size_semi_big">28.00sp</dimen>
+    <dimen name="text_size_big">66.00sp</dimen>
+
+</resources>
+

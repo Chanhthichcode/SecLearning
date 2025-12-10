@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet"
+    android:paddingHorizontal="@dimen/space_normal">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iconNoInternet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_no_internet" />
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/textTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_large"
+        android:gravity="center"
+        android:text="No internet connection"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:customFontFamily="@font/my_font_semibold"
+        app:layout_constraintTop_toBottomOf="@id/iconNoInternet" />
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/buttonNetworkSetting"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_normal"
+        android:layout_marginTop="@dimen/space_large"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_btn_custom_swap"
+        android:gravity="center"
+        android:text="View network setting"
+        android:textColor="@color/white"
+        android:textSize="@dimen/space_normal"
+        app:customFontFamily="@font/my_font_semibold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitle"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/buttonBackToMyFile"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_normal"
+        android:layout_marginTop="@dimen/space_small"
+        android:layout_marginBottom="29dp"
+        android:gravity="center"
+        android:text="Back to my file"
+        android:visibility="gone"
+        android:textColor="@color/color_gray_9CA3AF"
+        android:textSize="@dimen/space_normal"
+        app:customFontFamily="@font/my_font_semibold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonNetworkSetting" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivCloseNoInternet"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Chào mừng bạn đến với hệ thống hỗ trợ sinh viên ATTT"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        app:customFontFamily="@font/my_font_italic"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/btnNext"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_size_medium"
+        android:layout_marginHorizontal="@dimen/space_normal"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/bg_gradient_question"
+        android:gravity="center"
+        android:text="Tiếp theo"
+        android:textAllCaps="true"
+        android:textColor="@color/gray_F5F5F5"
+        android:textSize="@dimen/text_size_normal"
+        app:customFontFamily="@font/my_font_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="AllCaps" />
+</androidx.constraintlayout.widget.ConstraintLayout>

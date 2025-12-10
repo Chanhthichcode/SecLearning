@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="30dp">
+
+    <LinearLayout
+        android:id="@+id/question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:text="Câu hỏi:"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_bold" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_regular" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/option1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/question">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="5dp"
+            android:text="A"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="@drawable/bg_option_unselected"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_bold" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_regular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/option2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option1">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="5dp"
+            android:text="B"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="@drawable/bg_option_unselected"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_bold" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_regular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/option3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option2">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="5dp"
+            android:text="C"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="@drawable/bg_option_unselected"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_bold" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_regular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/option4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option3">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="5dp"
+            android:text="D"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="@drawable/bg_option_unselected"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_bold" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_regular" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

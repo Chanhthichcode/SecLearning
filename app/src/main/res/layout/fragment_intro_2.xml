@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/intro2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.58" />
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/tvTitle1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_semi_medium"
+        app:customFontFamily="@font/my_font_semibold"
+        android:gravity="center"
+        android:text="Thiết kế tương lai, định hình sự nghiệp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_semi_big"
+        app:layout_constraintBottom_toTopOf="@id/groupTextDescription"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_guide"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/groupTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_semi_medium"
+        app:layout_constraintBottom_toTopOf="@id/ic_indicator"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle1">
+        <com.android.seclearning.view.MyTextView
+            android:id="@+id/tvDescription1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.5"
+            android:gravity="center"
+            android:text="Chỉ cần cho chúng tôi biết mục tiêu của bạn"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_normal"
+            app:customFontFamily="@font/my_font_italic"
+            app:layout_constraintBottom_toTopOf="@id/tvDescription2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.android.seclearning.view.MyTextView
+            android:id="@+id/tvDescription2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0.5"
+            android:gravity="center"
+            android:text="AI sẽ phân tích và đề xuất các môn học, kỹ năng thực hành và chứng chỉ quan trọng nhất dành cho bạn."
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_normal"
+            app:customFontFamily="@font/my_font_italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ic_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/btnNext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupTextDescription"
+        app:srcCompat="@drawable/ic_indicator_2" />
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/btnNext"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_size_medium"
+        android:layout_marginHorizontal="@dimen/space_normal"
+        android:layout_marginBottom="@dimen/space_big"
+        android:background="@drawable/bg_btn_next_intro"
+        android:backgroundTint="@color/color_primary"
+        android:gravity="center"
+        android:text="Tiếp theo"
+        android:textAllCaps="true"
+        android:textColor="@color/gray_F5F5F5"
+        android:textSize="@dimen/text_size_normal"
+        app:customFontFamily="@font/my_font_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="AllCaps" />
+</androidx.constraintlayout.widget.ConstraintLayout>

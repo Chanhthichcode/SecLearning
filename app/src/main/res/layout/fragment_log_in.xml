@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/_15sdp">
+
+    <View
+        android:id="@+id/spaceStatusBar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_150sdp"
+        app:srcCompat="@drawable/icon_splash" />
+
+    <com.android.seclearning.view.MyTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Đăng nhập"
+        android:textColor="@color/color_primary"
+        android:textSize="@dimen/_25ssp"
+        app:customFontFamily="@font/my_font_bold" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:autofillHints=""
+        android:background="@drawable/bg_round_8dp"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="@dimen/_10sdp"
+        android:fontFamily="@font/my_font_regular"
+        android:hint="Email"
+        android:inputType="text"
+        android:minHeight="65dp"
+        android:padding="@dimen/_13sdp"
+        android:textColor="@color/black"
+        android:textColorHint="#AAAAAA"
+        android:textSize="15sp"
+        tools:ignore="TextFields" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/bg_round_8dp"
+        android:drawableStart="@drawable/ic_password"
+        android:drawableEnd="@drawable/ic_eye_selector"
+        android:drawablePadding="@dimen/_10sdp"
+        android:fontFamily="@font/my_font_regular"
+        android:hint="Mật khẩu"
+        android:inputType="textPassword"
+        android:minHeight="65dp"
+        android:padding="@dimen/_13sdp"
+        android:textColor="@color/black"
+        android:textColorHint="#AAAAAA"
+        android:textSize="15sp"
+        tools:ignore="TextFields" />
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/tv_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textColor="@color/red"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:customFontFamily="@font/my_font_regular" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/cb_remember_password"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:button="@drawable/custom_check_box"
+        android:checked="false"
+        android:fontFamily="@font/my_font_bold"
+        android:gravity="center"
+        android:padding="@dimen/_3sdp"
+        android:text="Ghi nhớ mật khẩu"
+        android:textColor="@color/color_primary"
+        android:textSize="13sp" />
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/btn_log_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/bg_round_20dp"
+        android:backgroundTint="#2ECC71"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_10ssp"
+        android:text="Đăng nhập"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:customFontFamily="@font/my_font_bold" />
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/btn_forget_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:padding="@dimen/_10sdp"
+        android:text="Quên mật khẩu ?"
+        android:textColor="@color/color_primary"
+        android:textSize="16sp"
+        app:customFontFamily="@font/my_font_bold" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bạn chưa có tài khoản?"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp"
+            app:customFontFamily="@font/my_font_bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
