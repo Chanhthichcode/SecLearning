@@ -1,15 +1,15 @@
 package com.android.seclearning.data.repository
 
 import com.android.seclearning.common.utils.runInIO
+import com.android.seclearning.data.model.QuestionModel
 import com.android.seclearning.data.model.UserModel
 import com.android.seclearning.data.network.Api
+import com.android.seclearning.data.network.END_POINT_GET_QUESTION
 import com.android.seclearning.data.network.END_POINT_LOGIN
 import com.android.seclearning.data.network.END_POINT_REGISTER
 import com.android.seclearning.data.network.generateServerAPI
 import com.android.seclearning.data.response.LoginRequest
 import com.android.seclearning.data.response.RegisterRequest
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody.Companion.toRequestBody
 import javax.inject.Inject
 
 class HomeDataRepository @Inject constructor(
@@ -65,5 +65,18 @@ class HomeDataRepository @Inject constructor(
                 password = password
             )
         )
+    }
+
+    suspend fun getListQuestions(): List<QuestionModel> {
+        val dataFromApi = runInIO { fetchListQuestions() }
+        return dataFromApi
+    }
+
+    private suspend fun fetchListQuestions(): List<QuestionModel> {
+        val url: String = generateServerAPI(END_POINT_GET_QUESTION)
+        val res = api.getListQuestion(
+            url = url,
+        )
+        return res
     }
 }

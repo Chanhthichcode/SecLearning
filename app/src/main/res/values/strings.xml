@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">SecLearning</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_answer_1">Vậy bạn là người mới. Bạn sẽ hoàn thành trả lời 1 vài câu hỏi để xem bạn phù hợp với ngành nghề nào nhé.</string>
+    <string name="text_answer_2">Vậy bạn là người đã có định hướng nhưng chưa có kỹ năng. Hồ sơ của bạn sẽ được tạo với các kỹ năng bằng 0.</string>
+    <string name="text_answer_3">Bạn hãy trả lới một vài câu hỏi để đánh giá qua các kỹ năng của bạn nhé.</string>
 </resources>

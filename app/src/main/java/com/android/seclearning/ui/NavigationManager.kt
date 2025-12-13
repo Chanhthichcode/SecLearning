@@ -10,8 +10,8 @@ import com.android.seclearning.ui.main.login.LoginFragment
 import com.android.seclearning.ui.main.login.RegisterFragment
 import com.android.seclearning.ui.main.onboard.SplashFragment
 import com.android.seclearning.ui.main.onboard.intro.IntroFragment
-import kotlin.apply
-import kotlin.jvm.java
+import com.android.seclearning.ui.main.question.QuestionFragment
+import com.android.seclearning.ui.main.question.QuizTestFragment
 
 object NavigationManager {
     fun navigateToSplash(manager: FragmentManager) {
@@ -45,14 +45,6 @@ object NavigationManager {
             e.printStackTrace()
         }
     }
-
-//    fun navigatePolicy(activity: Activity) {
-//        postDelayedSkipException {
-//            val intent = Intent(activity, PolicyActivity::class.java).apply {
-//            }
-//            activity.startActivity(intent)
-//        }
-//    }
 
     fun backToHome(activity: Activity) {
         val intent = Intent(activity, MainActivity::class.java)
@@ -115,4 +107,39 @@ object NavigationManager {
         }
     }
 
+    fun navigateToQuestion(manager: FragmentManager) {
+        try {
+            val fragment = QuestionFragment()
+            manager.beginTransaction().apply {
+                setCustomAnimations(
+                    R.anim.new_fade_in,
+                    R.anim.new_fade_out,
+                    R.anim.new_fade_in,
+                    R.anim.new_fade_out
+                )
+                replace(R.id.frame_main, fragment)
+                commitAllowingStateLoss()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    fun navigateToQuiz(manager: FragmentManager) {
+        try {
+            val fragment = QuizTestFragment()
+            manager.beginTransaction().apply {
+                setCustomAnimations(
+                    R.anim.new_fade_in,
+                    R.anim.new_fade_out,
+                    R.anim.new_fade_in,
+                    R.anim.new_fade_out
+                )
+                replace(R.id.frame_main, fragment)
+                commitAllowingStateLoss()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

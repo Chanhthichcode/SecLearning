@@ -16,7 +16,7 @@
         android:textSize="24sp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="20dp"
-        app:customFontFamily="@font/my_font_italic"
+        app:customFontFamily="@font/my_font_semibold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -32,7 +32,7 @@
         android:text="Tiếp theo"
         android:textAllCaps="true"
         android:textColor="@color/gray_F5F5F5"
-        android:textSize="@dimen/text_size_normal"
+        android:textSize="16dp"
         app:customFontFamily="@font/my_font_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

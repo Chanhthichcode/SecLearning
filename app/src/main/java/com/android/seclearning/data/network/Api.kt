@@ -1,8 +1,8 @@
 package com.android.seclearning.data.network
 
+import com.android.seclearning.data.model.QuestionModel
 import com.android.seclearning.data.model.UserModel
 import com.android.seclearning.data.response.LoginRequest
-import com.android.seclearning.data.response.QuestionResponse
 import com.android.seclearning.data.response.RegisterRequest
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -25,5 +25,5 @@ interface Api {
     @GET
     suspend fun getListQuestion(
         @Url url: String,
-    ): QuestionResponse
+    ): List<QuestionModel>
 }

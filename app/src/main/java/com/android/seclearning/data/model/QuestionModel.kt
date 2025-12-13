@@ -1,13 +1,21 @@
 package com.android.seclearning.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class QuestionModel(
-    val __v: Int,
-    val _id: String,
-    val createdAt: String,
-    val domain: String,
-    val mapping: List<String>,
-    val options: List<String>,
-    val question: String,
+    @SerializedName("_id")
+    val id: String,
+
     val questionId: Int,
+    val domain: String,
+    val question: String,
+
+    val options: List<String>,
+    val mapping: List<String>,
+
+    @SerializedName("__v")
+    val version: Int,
+
+    val createdAt: String,
     val updatedAt: String
 )

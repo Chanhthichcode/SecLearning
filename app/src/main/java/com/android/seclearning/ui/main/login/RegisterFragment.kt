@@ -1,8 +1,6 @@
 package com.android.seclearning.ui.main.login
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import com.android.seclearning.common.utils.addBounceAnim
@@ -62,11 +60,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
 
                 is ResultState.Success -> {
                     binding.tvError.gone()
-                    val dialog = DoneDialog()
-                    dialog.show(parentFragmentManager, DoneDialog.TAG)
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        dialog.dismiss()
-                    }, 2500)
+                    DoneDialog
+                        .newInstance("Đăng ký thành công")
+                        .show(parentFragmentManager, DoneDialog.TAG)
+
                     NavigationManager.navigateToLogin(parentFragmentManager)
                 }
 

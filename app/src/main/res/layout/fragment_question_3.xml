@@ -10,16 +10,16 @@
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Vậy bạn là người mới. Bạn sẽ hoàn thành trả lời 1 vài câu hỏi để xem bạn phù hợp với ngành nghề nào nhé."
-        android:textColor="@color/black"
-        android:textSize="24sp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="20dp"
-        app:customFontFamily="@font/my_font_italic"
-        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:customFontFamily="@font/my_font_semibold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/text_answer_1" />
 
     <com.android.seclearning.view.MyTextView
         android:id="@+id/btnNext"
@@ -32,10 +32,50 @@
         android:text="Tiếp theo"
         android:textAllCaps="true"
         android:textColor="@color/gray_F5F5F5"
-        android:textSize="@dimen/text_size_normal"
+        android:textSize="16dp"
         app:customFontFamily="@font/my_font_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="AllCaps" />
+
+    <LinearLayout
+        android:id="@+id/layout_choose_profession"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:customFontFamily="@font/my_font_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Chọn ngành nghề bạn muốn để tiếp tục" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_round_8dp"
+            android:padding="10dp">
+
+            <Spinner
+                android:id="@+id/spinner_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:spinnerMode="dropdown" />
+        </FrameLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
