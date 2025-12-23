@@ -1,6 +1,8 @@
 package com.android.seclearning.ui.main.login
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import com.android.seclearning.common.utils.addBounceAnim
@@ -63,6 +65,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
                     DoneDialog
                         .newInstance("Đăng ký thành công")
                         .show(parentFragmentManager, DoneDialog.TAG)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                    }, 2500)
+
 
                     NavigationManager.navigateToLogin(parentFragmentManager)
                 }

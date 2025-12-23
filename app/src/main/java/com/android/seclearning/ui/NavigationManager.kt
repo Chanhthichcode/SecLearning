@@ -4,8 +4,19 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
+import com.android.seclearning.Constants.OPEN_DETAIL_FROM
+import com.android.seclearning.Constants.OPEN_LAB_FROM
+import com.android.seclearning.Logger
 import com.android.seclearning.R
+import com.android.seclearning.common.utils.postDelayedSkipException
+import com.android.seclearning.data.enums.OpenDetailFrom
+import com.android.seclearning.data.enums.OpenLabFrom
+import com.android.seclearning.ui.common.isLiving
 import com.android.seclearning.ui.main.home.MainFragment
+import com.android.seclearning.ui.main.home.lab.LabDetailActivity
+import com.android.seclearning.ui.main.home.main.learning.LearningActivity
+import com.android.seclearning.ui.main.home.personal.PathDetailActivity
+import com.android.seclearning.ui.main.login.ForgotPasswordFragment
 import com.android.seclearning.ui.main.login.LoginFragment
 import com.android.seclearning.ui.main.login.RegisterFragment
 import com.android.seclearning.ui.main.onboard.SplashFragment
@@ -89,9 +100,28 @@ object NavigationManager {
         }
     }
 
+
     fun navigateToRegister(manager: FragmentManager) {
         try {
             val fragment = RegisterFragment()
+            manager.beginTransaction().apply {
+                setCustomAnimations(
+                    R.anim.new_fade_in,
+                    R.anim.new_fade_out,
+                    R.anim.new_fade_in,
+                    R.anim.new_fade_out
+                )
+                replace(R.id.frame_main, fragment)
+                commitAllowingStateLoss()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    fun navigateToForgetPassword(manager: FragmentManager) {
+        try {
+            val fragment = ForgotPasswordFragment()
             manager.beginTransaction().apply {
                 setCustomAnimations(
                     R.anim.new_fade_in,
@@ -125,7 +155,7 @@ object NavigationManager {
         }
     }
 
-    fun navigateToQuiz(manager: FragmentManager) {
+    fun navigateToQuiz(manager: FragmentManager, ) {
         try {
             val fragment = QuizTestFragment()
             manager.beginTransaction().apply {
@@ -136,9 +166,57 @@ object NavigationManager {
                     R.anim.new_fade_out
                 )
                 replace(R.id.frame_main, fragment)
+                addToBackStack("QuizTestFragment")
                 commitAllowingStateLoss()
             }
         } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    fun navigateToLearningActivity(
+        activity: Activity,
+        detailFrom: OpenDetailFrom
+    ) {
+        if (!activity.isLiving()) return
+        try {
+            val intent = Intent(activity, LearningActivity::class.java).apply {
+                putExtra(OPEN_DETAIL_FROM, detailFrom.from)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            activity.startActivity(intent)
+        } catch (e: Exception) {
+            Logger.logAction("ERROR: ${e.message}")
+            e.printStackTrace()
+        }
+    }
+
+    fun navigateToPathDetailActivity(
+        activity: Activity,
+        career: String
+    ) {
+        postDelayedSkipException {
+            if (!activity.isLiving()) return@postDelayedSkipException
+            val intent = Intent(activity, PathDetailActivity::class.java)
+            intent.putExtra("career", career)
+            activity.startActivity(intent)
+        }
+    }
+
+
+    fun navigateToLabDetailActivity(
+        activity: Activity,
+        detailFrom: OpenLabFrom
+    ) {
+        if (!activity.isLiving()) return
+        try {
+            val intent = Intent(activity, LabDetailActivity::class.java).apply {
+                putExtra(OPEN_LAB_FROM, detailFrom.from)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            activity.startActivity(intent)
+        } catch (e: Exception) {
+            Logger.logAction("ERROR: ${e.message}")
             e.printStackTrace()
         }
     }

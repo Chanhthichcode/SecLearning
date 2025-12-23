@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutRoot"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_border_dialog_2">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnBack"
+        android:layout_width="@dimen/button_size_normal"
+        android:layout_height="@dimen/button_size_normal"
+        android:layout_marginTop="@dimen/space_normal"
+        android:layout_marginEnd="@dimen/space_semi_small"
+        android:padding="@dimen/space_semi_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close_black" />
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start|center_vertical"
+        android:layout_marginStart="@dimen/space_normal"
+        android:text="Thêm bài thực hành"
+        android:textColor="@color/color_primary"
+        android:textSize="@dimen/text_size_medium"
+        app:customFontFamily="@font/my_font_semibold"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnBack" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/tvLink"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_medium"
+        android:layout_marginHorizontal="@dimen/space_normal"
+        android:layout_marginTop="@dimen/space_normal"
+        android:background="@drawable/bg_edt_create_new_pack"
+        android:hint="Đường dẫn"
+        android:imeOptions="actionDone"
+        android:inputType="textPersonName"
+        android:maxLength="30"
+        android:paddingHorizontal="@dimen/space_normal"
+        android:singleLine="true"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorTextHint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnSave"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_size_normal"
+        android:layout_marginHorizontal="@dimen/space_normal"
+        android:layout_marginTop="@dimen/space_medium"
+        android:background="@drawable/bg_btn_gradient"
+        android:gravity="center"
+        android:text="Lưu"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_medium"
+        android:layout_marginBottom="0dp"
+        app:customFontFamily="@font/my_font_semibold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLink"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.seclearning.data.model.UserModel
+import com.android.seclearning.data.repository.AppRepository
 import com.android.seclearning.data.repository.HomeDataRepository
 import com.android.seclearning.ui.main.login.ResultState
 import dagger.Lazy
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val repository: Lazy<HomeDataRepository>
+    private val repository: Lazy<HomeDataRepository>,
+    private val appRepository: Lazy<AppRepository>
 ) : ViewModel() {
 
     private val _registerState = MutableLiveData<ResultState<UserModel>>()
@@ -72,6 +74,9 @@ class LoginViewModel @Inject constructor(
                         errorCode
                     )
                 } else {
+                    if (result is UserModel) {
+                        appRepository.get().saveUser(result)
+                    }
                     stateLiveData.value = ResultState.Success(result)
                 }
             } catch (e: HttpException) {

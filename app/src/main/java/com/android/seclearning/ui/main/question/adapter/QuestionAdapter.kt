@@ -9,7 +9,7 @@ import com.android.seclearning.databinding.ItemQuizQuestionBinding
 
 class QuestionAdapter() : RecyclerView.Adapter<QuestionViewHolder>() {
 
-    private var listData = listOf<QuestionModel>()
+    private val listData = mutableListOf<QuestionModel>()
 
     private var onOptionSelected: ((Int, Int) -> Unit)? = null
     fun onOptionSelected(onOptionSelected: (Int, Int) -> Unit) {
@@ -18,7 +18,8 @@ class QuestionAdapter() : RecyclerView.Adapter<QuestionViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(newList: List<QuestionModel>) {
-        listData = newList
+        listData.clear()
+        listData.addAll(newList)
         notifyDataSetChanged()
     }
 
@@ -29,12 +30,12 @@ class QuestionAdapter() : RecyclerView.Adapter<QuestionViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
-        listData.getOrNull(position)?.let { mItem ->
-            holder.bind(mItem) { optionIndex ->
-                onOptionSelected?.invoke(mItem.questionId, optionIndex)
-            }
+        val item = listData[position]
+        holder.bind(item) { qId, optIndex ->
+            onOptionSelected?.invoke(qId, optIndex)
         }
     }
+
 
     override fun getItemCount(): Int = listData.size
 }

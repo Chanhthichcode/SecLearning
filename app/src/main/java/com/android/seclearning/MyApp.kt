@@ -19,6 +19,8 @@ class MyApp : MultiDexApplication(), DefaultLifecycleObserver{
     @Inject
     lateinit var appRepository: Lazy<AppRepository>
 
+    var isEnterHome = false
+
     override fun onCreate() {
         super<MultiDexApplication>.onCreate()
         instance = this
@@ -59,3 +61,4 @@ class MyApp : MultiDexApplication(), DefaultLifecycleObserver{
 fun myApp() = MyApp.instance
 fun appContext() = MyApp.getContext()
 fun appRepository(): AppRepository = MyApp.instance.appRepository.get()
+

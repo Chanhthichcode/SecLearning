@@ -9,5 +9,6 @@
 
     <declare-styleable name="MyTextView">
         <attr name="customFontFamily" format="reference" />
+        <attr name="strikeThrough" format="boolean" />
     </declare-styleable>
 </resources>

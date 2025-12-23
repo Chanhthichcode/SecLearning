@@ -17,5 +17,6 @@ data class QuestionModel(
     val version: Int,
 
     val createdAt: String,
-    val updatedAt: String
+    val updatedAt: String,
+    var selectedOption: Int = -1,
 )

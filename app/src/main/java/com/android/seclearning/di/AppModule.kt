@@ -1,6 +1,7 @@
 package com.android.seclearning.di
 
 import android.content.Context
+import com.android.seclearning.common.utils.CopyPasteManager
 import com.android.seclearning.data.local.PreferencesManager
 import dagger.Lazy
 import dagger.Module
@@ -20,4 +21,9 @@ object AppModule {
         @ApplicationContext context: Context
     ) = PreferencesManager(context)
 
+    @Singleton
+    @Provides
+    fun providerCopyPasteManager(
+        @ApplicationContext context: Context
+    ) = CopyPasteManager(context)
 }

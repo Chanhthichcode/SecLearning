@@ -1,4 +1,4 @@
-package com.android.seclearning.data.response
+package com.android.seclearning.data.request
 
 import com.google.gson.annotations.SerializedName
 

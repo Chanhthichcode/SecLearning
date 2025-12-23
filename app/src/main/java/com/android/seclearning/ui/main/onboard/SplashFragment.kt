@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.android.seclearning.Logger
+import com.android.seclearning.appRepository
+import com.android.seclearning.data.repository.AppRepository
 import com.android.seclearning.databinding.FragmentSplashBinding
 import com.android.seclearning.ui.NavigationManager
 import com.android.seclearning.ui.common.base.BaseFragment
@@ -35,9 +38,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
         initJob?.cancel()
         initJob = viewLifecycleOwner.lifecycleScope.launch {
-            delay(500)
+            delay(2000)
             viewModel.getAppConfig()
-
             viewModel.appStatusLoaded.observe(viewLifecycleOwner) { loaded ->
                 if (loaded == true) {
                     nextScreen()
@@ -76,8 +78,12 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                 !viewModel.isLoggedIn() -> {
                     navigateAnim { NavigationManager.navigateToLogin(parentFragmentManager) }
                 }
+                viewModel.isAdmin() -> {
+                    Logger.d("Splash", "👑 Admin detected → Main")
+                    navigateAnim { NavigationManager.navigateToMain(parentFragmentManager) }
+                }
                 !viewModel.isBuildRoadmap() -> {
-//                    navigateAnim { NavigationManager.navigateToBuildRoadmap(parentFragmentManager) }
+                    navigateAnim { NavigationManager.navigateToQuestion(parentFragmentManager) }
                 }
                 else -> {
                     navigateAnim { NavigationManager.navigateToMain(parentFragmentManager) }

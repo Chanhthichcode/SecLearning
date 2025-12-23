@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30dp"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:customFontFamily="@font/my_font_semibold"
+            android:text="🎯 Giai đoạn 0 - Network &amp; Protocol Basics"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Nắm mô hình OSI/TCP-IP, các giao thức cơ bản: ARP, IP, TCP, UDP, ICMP."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Hiểu cách hoạt động routing, switching, NAT, basic firewall."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Làm quen với Wireshark, tcpdump và cách đọc gói tin."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:customFontFamily="@font/my_font_semibold"
+            android:layout_marginTop="10dp"
+            android:text="🎯 Giai đoạn 1 - Network Attacks &amp; Defense Basics"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Thực hành các tấn công mạng cơ bản: ARP spoofing, TCP flooding, session hijacking (trong môi trường lab)."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Hiểu các kỹ thuật DNS spoofing/pharming ở LAN."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Nhận diện dấu hiệu các tấn công này trong Wireshark/PCAP."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:customFontFamily="@font/my_font_semibold"
+            android:layout_marginTop="10dp"
+            android:text="🎯 Giai đoạn 2 - Firewall, VPN &amp; IDS/IPS"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Cấu hình và kiểm thử firewall (iptables, security groups) trong lab."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Hiểu cách VPN hỗ trợ bypass firewall, tunneling và các rủi ro liên quan."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Làm quen với IDS/IPS (Suricata/Snort) ở mức rule &amp; alert cơ bản."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:customFontFamily="@font/my_font_semibold"
+            android:layout_marginTop="10dp"
+            android:text="🎯 Giai đoạn 3 - Network Forensics &amp; Detection"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Phân tích PCAP để dựng lại chuỗi tấn công (scan, exploit, C2, exfiltration)."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Sử dụng Wireshark, Brim/Zep, NetworkMiner để phân tích traffic."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Kết nối dấu vết trong mạng với log/alert từ SIEM để phát hiện tấn công."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

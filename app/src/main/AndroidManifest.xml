@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name="com.android.seclearning.MyApp"
         android:allowBackup="true"
@@ -30,6 +33,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.main.home.main.learning.LearningActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|uiMode|keyboard|smallestScreenSize"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait"
+            android:supportsPictureInPicture="false"
+            android:theme="@style/Theme.MyApp"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity,NonResizeableActivity" />
+
+        <activity
+            android:name=".ui.main.home.personal.PathDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|uiMode|keyboard|smallestScreenSize"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait"
+            android:supportsPictureInPicture="false"
+            android:theme="@style/Theme.MyApp"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity,NonResizeableActivity" />
+
+        <activity
+            android:name=".ui.main.home.lab.LabDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|uiMode|keyboard|smallestScreenSize"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait"
+            android:supportsPictureInPicture="false"
+            android:theme="@style/Theme.MyApp"
+            tools:ignore="DiscouragedApi,LockedOrientationActivity,NonResizeableActivity" />
     </application>
 
 </manifest>

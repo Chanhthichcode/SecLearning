@@ -4,4 +4,13 @@
     <string name="text_answer_1">Vậy bạn là người mới. Bạn sẽ hoàn thành trả lời 1 vài câu hỏi để xem bạn phù hợp với ngành nghề nào nhé.</string>
     <string name="text_answer_2">Vậy bạn là người đã có định hướng nhưng chưa có kỹ năng. Hồ sơ của bạn sẽ được tạo với các kỹ năng bằng 0.</string>
     <string name="text_answer_3">Bạn hãy trả lới một vài câu hỏi để đánh giá qua các kỹ năng của bạn nhé.</string>
+    <string name="title_home"><![CDATA[Trang chủ]]></string>
+    <string name="title_home_me"><![CDATA[Tôi]]></string>
+    <string name="title_home_library"><![CDATA[Thực hành]]></string>
+    <string name="title_home_setting"><![CDATA[Cài đặt]]></string>
+    <string name="title_overview"><![CDATA[Tổng quan]]></string>
+    <string name="title_learning_path"><![CDATA[Lộ trình]]></string>
+    <string name="title_lab"><![CDATA[Bài lab]]></string>
+    <string name="title_resource"><![CDATA[Tài liệu liên quan]]></string>
+    <string name="copied_to_clipboard"><![CDATA[Đã lưu vào bộ nhớ đệm!]]></string>
 </resources>

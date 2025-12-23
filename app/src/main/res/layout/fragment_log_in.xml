@@ -66,15 +66,27 @@
         android:textSize="15sp"
         tools:ignore="TextFields" />
 
-    <com.android.seclearning.view.MyTextView
-        android:id="@+id/tv_error"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:textColor="@color/red"
-        android:textSize="13sp"
-        android:visibility="gone"
-        app:customFontFamily="@font/my_font_regular" />
+        android:gravity="center|start"
+        android:layout_marginTop="@dimen/_10sdp">
+        <com.android.seclearning.view.MyTextView
+            android:id="@+id/tv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:visibility="gone"
+            android:textColor="@color/red"
+            android:textSize="13sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:visibility="gone"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/cb_remember_password"
@@ -104,17 +116,6 @@
         android:textSize="16sp"
         app:customFontFamily="@font/my_font_bold" />
 
-    <com.android.seclearning.view.MyTextView
-        android:id="@+id/btn_forget_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:padding="@dimen/_10sdp"
-        android:text="Quên mật khẩu ?"
-        android:textColor="@color/color_primary"
-        android:textSize="16sp"
-        app:customFontFamily="@font/my_font_bold" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/btn_register"

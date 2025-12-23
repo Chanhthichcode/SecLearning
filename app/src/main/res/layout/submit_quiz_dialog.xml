@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/space_normal"
+        android:background="@drawable/bg_dialog"
+        android:padding="@dimen/space_normal">
+
+        <com.android.seclearning.view.MyTextView
+            android:id="@+id/txtTitle"
+            style="@style/TextTitleDialogStyle"
+            android:text="Nộp bài"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.android.seclearning.view.MyTextView
+            android:id="@+id/txtDescription"
+            style="@style/TextDescriptionStyle"
+            android:layout_marginTop="@dimen/space_normal"
+            android:gravity="center"
+            android:text="Hãy kiểm tra các đáp án trước khi nộp bài"
+            android:textSize="@dimen/text_size_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+        <com.android.seclearning.view.MyTextView
+            android:id="@+id/btnCancel"
+            style="@style/ButtonNormalStyle"
+            android:layout_marginTop="@dimen/space_large"
+            android:gravity="center"
+            android:text="Hủy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
+
+        <com.android.seclearning.view.MyTextView
+            android:id="@+id/btnConfirm"
+            style="@style/ButtonNormalStyle"
+            android:layout_marginTop="@dimen/space_semi_small"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/bg_white_radius_12"
+            android:gravity="center"
+            android:text="OK"
+            android:textColor="#626262"
+            app:customFontFamily="@font/my_font_semibold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCancel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

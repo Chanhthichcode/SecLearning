@@ -71,4 +71,7 @@
     <color name="color_primary">#221145</color>
     <color name="colorPrimary">#221145</color>
     <color name="color_8A77BC">#b09de3</color>
+    <color name="color_1C2657">#1C2657</color>
+    <color name="color_F4E9F6">#F4E9F6</color>
+    <color name="colorTextHint">#9E9E9E</color>
 </resources>

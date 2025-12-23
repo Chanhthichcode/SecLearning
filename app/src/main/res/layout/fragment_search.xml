@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/space_normal">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/layout_blue_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_semi_small"
+            android:background="@drawable/bg_item_lab"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/logo_blue_team" />
+
+            <com.android.seclearning.view.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginEnd="@dimen/space_medium"
+                android:text="Blue Team Labs"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:customFontFamily="@font/my_font_semibold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_cyber_defenders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_item_lab"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/logo_cyber_defender" />
+
+            <com.android.seclearning.view.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginEnd="@dimen/space_medium"
+                android:text="Cyber Defenders"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:customFontFamily="@font/my_font_semibold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_labtainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_item_lab"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/logo_labtainer" />
+
+            <com.android.seclearning.view.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginEnd="@dimen/space_medium"
+                android:text="Labtainer"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:customFontFamily="@font/my_font_semibold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_seed_labs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_item_lab"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/logo_seed_labs" />
+
+            <com.android.seclearning.view.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginEnd="@dimen/space_medium"
+                android:text="SEED Labs"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:customFontFamily="@font/my_font_semibold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_port_swigger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_item_lab"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/logo_post_swigger" />
+
+            <com.android.seclearning.view.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginEnd="@dimen/space_medium"
+                android:text="Post Swigger"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:customFontFamily="@font/my_font_semibold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_hack_the_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            android:background="@drawable/bg_item_lab"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_lab" />
+
+            <com.android.seclearning.view.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginEnd="@dimen/space_medium"
+                android:text="Hack The Box"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:customFontFamily="@font/my_font_semibold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_try_hack_me"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            android:background="@drawable/bg_item_lab"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_lab" />
+
+            <com.android.seclearning.view.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginEnd="@dimen/space_medium"
+                android:text="Try Hack Me"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:customFontFamily="@font/my_font_semibold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_add_lab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_item_lab"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ic_add" />
+
+            <com.android.seclearning.view.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginEnd="@dimen/space_medium"
+                android:text="Thêm bài Lab"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                app:customFontFamily="@font/my_font_semibold" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

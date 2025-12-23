@@ -1,6 +1,8 @@
 package com.android.seclearning.ui.main.login
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import androidx.fragment.app.viewModels
 import com.android.seclearning.Logger
@@ -58,19 +60,33 @@ class LoginFragment : BaseFragment<FragmentLogInBinding>() {
         viewModel.loginState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is ResultState.Loading -> {
+                    binding.tvError.apply {
+                        visible()
+                        text = "Đang tải, vui lòng đợi"
+                    }
+                    binding.loading.visible()
                     Logger.d("LoginUI", "🔄 Loading")
                 }
 
                 is ResultState.Success -> {
                     Logger.d("LoginUI", "✅ Success: ${state.data}")
+                    binding.loading.gone()
                     binding.tvError.gone()
-                    val dialog = DoneDialog()
 
                     DoneDialog
                         .newInstance("Đăng nhập thành công")
                         .show(parentFragmentManager, DoneDialog.TAG)
 
-                    NavigationManager.navigateToQuestion(parentFragmentManager)
+                    appRepository().setLoggedIn()
+
+                    Handler(Looper.getMainLooper()).postDelayed({
+                    }, 2500)
+
+                    if (appRepository().isAdmin()) {
+                        NavigationManager.navigateToMain(parentFragmentManager)
+                    } else {
+                        NavigationManager.navigateToQuestion(parentFragmentManager)
+                    }
                 }
 
                 is ResultState.Error -> {
@@ -78,6 +94,7 @@ class LoginFragment : BaseFragment<FragmentLogInBinding>() {
                         "LoginUI",
                         "❌ Error | code=${state.code} | message=${state.exception.message}"
                     )
+                    binding.loading.gone()
                     binding.tvError.apply {
                         visible()
                         text = state.exception.message

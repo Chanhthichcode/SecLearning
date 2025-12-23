@@ -6,29 +6,34 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.seclearning.data.model.QuestionModel
 import com.android.seclearning.databinding.ItemQuizQuestionBinding
 
-class QuestionViewHolder(val binding: ItemQuizQuestionBinding) :
-    RecyclerView.ViewHolder(binding.root) {
+class QuestionViewHolder(
+    private val binding: ItemQuizQuestionBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
-    private var itemOptionAdapter: ItemOptionAdapter = ItemOptionAdapter()
+    private val optionAdapter = ItemOptionAdapter()
 
     init {
         binding.rcQuiz.apply {
-            adapter = itemOptionAdapter
-            layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            adapter = optionAdapter
+            layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
         }
     }
 
     @SuppressLint("SetTextI18n")
-    fun bind(mItem: QuestionModel, onOptionSelected: (optionIndex: Int) -> Unit) {
-        binding.tvQuestion.text = "Câu hỏi ${mItem.questionId}"
+    fun bind(
+        item: QuestionModel,
+        onOptionSelected: (questionId: Int, optionIndex: Int) -> Unit
+    ) {
+        binding.tvQuestion.text = "Câu ${item.questionId}"
+        binding.tvContent.text = item.question
 
-        itemOptionAdapter.submitList(mItem.options)
-        itemOptionAdapter = ItemOptionAdapter().apply {
-            onClick { index ->
-                onOptionSelected(index)
-            }
+        optionAdapter.submitList(item.options)
+        optionAdapter.setSelected(item.selectedOption)
+
+        optionAdapter.onClick = { index ->
+            onOptionSelected(item.questionId, index)
         }
+
     }
 }

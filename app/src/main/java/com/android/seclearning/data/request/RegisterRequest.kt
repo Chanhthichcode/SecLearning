@@ -1,6 +1,5 @@
-package com.android.seclearning.data.response
+package com.android.seclearning.data.request
 
-import com.android.seclearning.data.model.QuestionModel
 import com.google.gson.annotations.SerializedName
 
 data class RegisterRequest(

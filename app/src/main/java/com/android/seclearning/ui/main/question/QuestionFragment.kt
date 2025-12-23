@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.widget.TooltipCompat
 import androidx.fragment.app.activityViewModels
+import com.android.seclearning.appRepository
 import com.android.seclearning.common.utils.marginWithStatusBar
+import com.android.seclearning.data.enums.AnswerType
 import com.android.seclearning.databinding.FragmentQuestionBinding
 import com.android.seclearning.ui.NavigationManager
 import com.android.seclearning.ui.common.base.BaseFragment
@@ -62,6 +64,15 @@ class QuestionFragment : BaseFragment<FragmentQuestionBinding>() {
 
     @Subscribe
     fun onEvent(event: Question3Fragment.EventClickDone) {
-        NavigationManager.navigateToQuiz(parentFragmentManager)
+        when (event.answerType) {
+            AnswerType.BEGINNER, AnswerType.IMPROVER -> {
+                NavigationManager.navigateToQuiz(parentFragmentManager)
+            }
+            AnswerType.LEARNER -> {
+                NavigationManager.navigateToMain(parentFragmentManager)
+                appRepository().setBuildRoadmap()
+            }
+        }
     }
+
 }

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30dp"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:customFontFamily="@font/my_font_bold"
+            android:text="🔍 Khái quát:"
+            android:textColor="@color/color_primary"
+            android:textSize="20sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Đóng vai attacker kiểm thử hệ thống mạng, hạ tầng, AD để tìm điểm yếu và mô phỏng các chiến dịch tấn công thực tế."
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:customFontFamily="@font/my_font_bold"
+            android:text="🎯 Công việc chính:"
+            android:textColor="@color/color_primary"
+            android:textSize="20sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Scan, enum mạng nội bộ và hạ tầng (server, service, AD, VPN, firewall)"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Khai thác các dịch vụ yếu, leo thang đặc quyền, lateral movement trong mạng"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Tham gia các bài red team exercise, purple team với blue team/SOC"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Viết báo cáo mô tả kill chain, đường đi từ bên ngoài vào tài sản quan trọng"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:customFontFamily="@font/my_font_bold"
+            android:text="🛠️ Kỹ năng cần có:"
+            android:textColor="@color/color_primary"
+            android:textSize="20sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Hiểu TCP/IP, LAN/WAN, VLAN, VPN, firewall, proxy, IDS/IPS cơ bản"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Quen các công cụ như Nmap, Wireshark, Metasploit, Impacket, BloodHound"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Nắm được attack path phổ biến trong AD và nội bộ doanh nghiệp"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Biết viết/đọc script đơn giản để tự động hóa (Python, Bash, PowerShell)"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:customFontFamily="@font/my_font_bold"
+            android:text="🧠 Tính cách phù hợp:"
+            android:textColor="@color/color_primary"
+            android:textSize="20sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Thích cảm giác 'đột nhập', đi đường vòng và chinh phục hệ thống phức tạp"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Thích nhìn toàn bộ sơ đồ mạng, mô hình hệ thống và suy nghĩ chiến thuật tấn công"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Thoải mái làm việc với command line, tool dòng lệnh"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:customFontFamily="@font/my_font_bold"
+            android:text="💼 Vị trí công việc:"
+            android:textColor="@color/color_primary"
+            android:textSize="20sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Network Security Engineer"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Internal/External Pentester"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Red Team Operator"
+            android:textColor="@color/color_primary"
+            android:textSize="16sp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/space_normal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:clipToPadding="false"
+        android:layout_marginBottom="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/banner_soc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_semi_small"
+            android:background="@drawable/bg_soc_banner"
+            android:minHeight="135dp"
+            android:padding="@dimen/space_normal">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <com.android.seclearning.view.MyTextView
+                android:id="@+id/title1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ellipsize="marquee"
+                android:gravity="start|center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="Lộ trình SOC Analyst"
+                android:textColor="@color/color_1C2657"
+                android:textSize="16sp"
+                app:customFontFamily="@font/my_font_semibold"
+                app:layout_constraintEnd_toStartOf="@id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.android.seclearning.view.MyTextView
+                android:id="@+id/btnSeeAll1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_semi_medium"
+                android:background="@drawable/bg_btn_gradient"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawablePadding="@dimen/space_tiny"
+                android:gravity="center|center_vertical"
+                android:paddingHorizontal="@dimen/space_normal"
+                android:paddingVertical="@dimen/space_semi_small"
+                android:text="Xem tất cả"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal"
+                app:customFontFamily="@font/my_font_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/banner_web"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_semi_small"
+            android:background="@drawable/bg_web_pentest_banner"
+            android:minHeight="135dp"
+            android:padding="@dimen/space_normal">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <com.android.seclearning.view.MyTextView
+                android:id="@+id/title2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ellipsize="marquee"
+                android:gravity="start|center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:text="Lộ trình Web Pentester"
+                android:textColor="@color/color_1C2657"
+                android:textSize="16sp"
+                app:customFontFamily="@font/my_font_semibold"
+                app:layout_constraintEnd_toStartOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.android.seclearning.view.MyTextView
+                android:id="@+id/btnSeeAll2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_normal"
+                android:background="@drawable/bg_btn_gradient"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawablePadding="@dimen/space_tiny"
+                android:gravity="center|center_vertical"
+                android:paddingHorizontal="@dimen/space_normal"
+                android:paddingVertical="@dimen/space_semi_small"
+                android:text="Xem tất cả"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal"
+                app:customFontFamily="@font/my_font_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/banner_network"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_semi_small"
+            android:background="@drawable/bg_net_security_banner"
+            android:minHeight="135dp"
+            android:padding="@dimen/space_normal">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <com.android.seclearning.view.MyTextView
+                android:id="@+id/title3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ellipsize="marquee"
+                android:gravity="start|center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:text="Lộ trình Network Security"
+                android:textColor="@color/color_1C2657"
+                android:textSize="16sp"
+                app:customFontFamily="@font/my_font_semibold"
+                app:layout_constraintEnd_toStartOf="@id/guideline3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.android.seclearning.view.MyTextView
+                android:id="@+id/btnSeeAll3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_normal"
+                android:background="@drawable/bg_btn_gradient"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawablePadding="@dimen/space_tiny"
+                android:gravity="center|center_vertical"
+                android:paddingHorizontal="@dimen/space_normal"
+                android:paddingVertical="@dimen/space_semi_small"
+                android:text="Xem tất cả"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal"
+                app:customFontFamily="@font/my_font_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/banner_malware"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_semi_small"
+            android:background="@drawable/bg_malware_banner"
+            android:minHeight="135dp"
+            android:padding="@dimen/space_normal">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <com.android.seclearning.view.MyTextView
+                android:id="@+id/title4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ellipsize="marquee"
+                android:gravity="start|center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:text="Lộ trình Malware Analyst"
+                android:textColor="@color/color_1C2657"
+                android:textSize="16sp"
+                app:customFontFamily="@font/my_font_semibold"
+                app:layout_constraintEnd_toStartOf="@id/guideline4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.android.seclearning.view.MyTextView
+                android:id="@+id/btnSeeAll4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_normal"
+                android:background="@drawable/bg_btn_gradient"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawablePadding="@dimen/space_tiny"
+                android:gravity="center|center_vertical"
+                android:paddingHorizontal="@dimen/space_normal"
+                android:paddingVertical="@dimen/space_semi_small"
+                android:text="Xem tất cả"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal"
+                app:customFontFamily="@font/my_font_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/banner_dfir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_semi_small"
+            android:background="@drawable/bg_dfig_banner"
+            android:minHeight="135dp"
+            android:padding="@dimen/space_normal">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.55" />
+
+            <com.android.seclearning.view.MyTextView
+                android:id="@+id/title5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ellipsize="marquee"
+                android:gravity="start|center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="Lộ trình DFIR (Digital Forensics và Incident Response)"
+                android:textColor="@color/color_1C2657"
+                android:textSize="16sp"
+                app:customFontFamily="@font/my_font_semibold"
+                app:layout_constraintEnd_toStartOf="@id/guideline5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.android.seclearning.view.MyTextView
+                android:id="@+id/btnSeeAll5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_normal"
+                android:background="@drawable/bg_btn_gradient"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawablePadding="@dimen/space_tiny"
+                android:gravity="center|center_vertical"
+                android:paddingHorizontal="@dimen/space_normal"
+                android:paddingVertical="@dimen/space_semi_small"
+                android:text="Xem tất cả"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal"
+                app:customFontFamily="@font/my_font_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

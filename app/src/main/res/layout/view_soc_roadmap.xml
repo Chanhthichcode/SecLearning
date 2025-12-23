@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingBottom="30dp">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🎯 Giai đoạn 0 - SOC &amp; Log Fundamentals"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_semibold" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Hiểu mô hình SOC, vai trò Tier 1/2/3."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Nắm các loại log cơ bản: Windows, Linux, network, web, email."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Đọc được alert cơ bản từ SIEM."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="🎯 Giai đoạn 1 - Log Analysis &amp; SIEM 101"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_semibold" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Phân tích log HTTP/Proxy, IDS/IPS, firewall."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Lọc, tìm kiếm log trong SIEM (Splunk/Elastic/QRadar)."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Triage các alert liên quan đến tấn công web &amp; network."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="🎯 Giai đoạn 2 - Endpoint &amp; Active Directory Monitoring"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_semibold" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Đọc và phân tích Windows Event Logs, Sysmon, PowerShell logs."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Theo dõi hành vi bất thường trên Active Directory."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Sử dụng SIEM để điều tra lateral movement, privilege escalation."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="🎯 Giai đoạn 3 - Threat Hunting &amp; Incident Handling"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp"
+            app:customFontFamily="@font/my_font_semibold" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Xây dựng use case / detection rule dựa trên MITRE ATT&amp;CK."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Xây dựng use case / detection rule dựa trên MITRE ATT&amp;CK."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="🔹 Phối hợp cùng DFIR team trong quá trình incident response."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp"
+            app:customFontFamily="@font/my_font_regular" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/space_normal">
+
+
+    <com.android.seclearning.view.MyTextView
+        android:id="@+id/btn_log_out"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_semi_small"
+        android:background="@drawable/bg_white_radius_12"
+        android:backgroundTint="@color/white"
+        android:drawableStart="@drawable/ic_log_out"
+        android:drawableEnd="@drawable/ic_right"
+        android:drawablePadding="@dimen/space_semi_small"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:minHeight="@dimen/button_size_normal"
+        android:padding="@dimen/space_semi_small"
+        android:text="Đăng xuất"
+        android:textColor="@color/color_primary"
+        android:textSize="@dimen/text_size_normal"
+        app:customFontFamily="@font/my_font_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

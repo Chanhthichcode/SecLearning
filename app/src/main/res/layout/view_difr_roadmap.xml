@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30dp"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:customFontFamily="@font/my_font_semibold"
+            android:text="🎯 Giai đoạn 0 - DFIR Fundamentals"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Hiểu khái niệm DFIR, chain of custody, evidence handling."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Nắm các loại bằng chứng: disk image, memory dump, PCAP, log."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Làm quen với công cụ: FTK Imager, Autopsy, CyberChef."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:customFontFamily="@font/my_font_semibold"
+            android:layout_marginTop="10dp"
+            android:text="🎯 Giai đoạn 1 - Windows Disk Forensics"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Phân tích file system, registry, prefetch, shortcut, browser artifacts."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Dựng timeline hoạt động trên máy nạn nhân."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Xác định vector xâm nhập &amp; persistence cơ bản."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:customFontFamily="@font/my_font_semibold"
+            android:layout_marginTop="10dp"
+            android:text="🎯 Giai đoạn 2 - Memory Forensics"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Sử dụng Volatility/Volatility3 phân tích memory dump."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Tìm process ẩn, injected code, network connections trong RAM."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Trích xuất IoC phục vụ hunting &amp; detection."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:customFontFamily="@font/my_font_semibold"
+            android:layout_marginTop="10dp"
+            android:text="🎯 Giai đoạn 3 - Network Forensics &amp; Full IR"
+            android:textColor="@color/color_primary"
+            android:textSize="18sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Phân tích PCAP tìm chuỗi tấn công (exploit kit, C2, exfiltration)"
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Kết hợp disk + memory + network để dựng full incident timeline."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+
+        <com.android.seclearning.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:customFontFamily="@font/my_font_regular"
+            android:text="🔹 Viết báo cáo DFIR với IoC, MITRE mapping và khuyến nghị."
+            android:textColor="@color/color_primary"
+            android:textSize="15sp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
