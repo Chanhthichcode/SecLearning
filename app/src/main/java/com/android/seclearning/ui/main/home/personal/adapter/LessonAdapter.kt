@@ -11,7 +11,8 @@ import com.android.seclearning.view.MyTextView
 
 class LessonAdapter(
     private var completed: Int,
-    private val onTaskCompleted: (Int) -> Unit
+    private val onTaskCompleted: (Int) -> Unit,
+    private val onTaskClick: ((Int) -> Unit)? = null
 ) : RecyclerView.Adapter<LessonAdapter.LessonVH>() {
 
     private val levels = mutableListOf<TaskLevelModel>()
@@ -66,6 +67,9 @@ class LessonAdapter(
                     completed = completed,
                     onTaskChecked = {
                         onTaskCompleted(it)
+                    },
+                    onTaskClick = { index ->
+                        onTaskClick?.invoke(index)
                     }
                 )
             }

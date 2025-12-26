@@ -94,7 +94,8 @@ class ItemLabAdapter :
                 OpenLabFrom.SEED_LAB.from -> R.drawable.logo_seed_labs
                 OpenLabFrom.BLUE_TEAM.from -> R.drawable.logo_blue_team
                 OpenLabFrom.CYBER.from -> R.drawable.logo_cyber_defender
-                else -> R.drawable.logo_post_swigger
+                OpenLabFrom.PORT_SWIGGER.from -> R.drawable.logo_post_swigger
+                else -> R.drawable.ic_lab
             }
         }
     }

@@ -6,6 +6,5 @@ enum class OpenLabFrom(val from: String) {
     BLUE_TEAM("BlueTeamLabs"),
     CYBER("CyberDefenders"),
     PORT_SWIGGER("PortSwigger"),
-    HACK_THE_BOX("HackTheBox"),
-    TRY_HACK_ME("TryHackMe")
+    NEW_LAB("NewLab")
 }

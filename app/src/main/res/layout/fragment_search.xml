@@ -146,11 +146,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout_hack_the_box"
+            android:id="@+id/layout_new_lab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:visibility="gone"
             android:background="@drawable/bg_item_lab"
             android:gravity="center_vertical"
             android:padding="16dp"
@@ -167,35 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/space_normal"
                 android:layout_marginEnd="@dimen/space_medium"
-                android:text="Hack The Box"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp"
-                app:customFontFamily="@font/my_font_semibold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_try_hack_me"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:visibility="gone"
-            android:background="@drawable/bg_item_lab"
-            android:gravity="center_vertical"
-            android:padding="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_lab" />
-
-            <com.android.seclearning.view.MyTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_normal"
-                android:layout_marginEnd="@dimen/space_medium"
-                android:text="Try Hack Me"
+                android:text="New Labs"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 app:customFontFamily="@font/my_font_semibold" />

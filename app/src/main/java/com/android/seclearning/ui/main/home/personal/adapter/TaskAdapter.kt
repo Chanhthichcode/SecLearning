@@ -7,13 +7,15 @@ import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.seclearning.R
+import com.android.seclearning.common.utils.setSafeOnClickListener
 import com.android.seclearning.view.MyTextView
 
 class TaskAdapter(
     private val goals: List<String>,
     private val startIndex: Int,
     private val completed: Int,
-    private val onTaskChecked: (Int) -> Unit
+    private val onTaskChecked: (Int) -> Unit,
+    private val onTaskClick: ((Int) -> Unit)? = null
 ) : RecyclerView.Adapter<TaskAdapter.TaskVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskVH {
@@ -65,6 +67,12 @@ class TaskAdapter(
                 // Chỉ xử lý nếu đây là hành động bấm từ người dùng
                 if (buttonView.isPressed && isChecked && index == completed) {
                     onTaskChecked(index) // Truyền index hiện tại lên, API sẽ tự +1
+                }
+            }
+
+            itemView.setSafeOnClickListener {
+                if (index <= completed) { // Chỉ cho click task đã unlock
+                    onTaskClick?.invoke(index)
                 }
             }
         }

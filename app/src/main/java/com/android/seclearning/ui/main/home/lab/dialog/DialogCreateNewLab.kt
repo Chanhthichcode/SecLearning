@@ -19,7 +19,7 @@ class DialogCreateNewLab : BaseDialog<DialogCreateNewLabBinding>() {
     }
 
     override fun getGravityForDialog(): Int {
-        return Gravity.BOTTOM
+        return Gravity.CENTER
     }
 
     override fun initViewAndData(

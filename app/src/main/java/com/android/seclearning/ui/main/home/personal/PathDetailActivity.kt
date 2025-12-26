@@ -1,15 +1,19 @@
 package com.android.seclearning.ui.main.home.personal
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.seclearning.Constants.EXTRA_ORIGIN
+import com.android.seclearning.Constants.ORIGIN_PATH_DETAIL
 import com.android.seclearning.Logger
 import com.android.seclearning.common.utils.marginWithStatusBar
 import com.android.seclearning.common.utils.setSafeOnClickListener
 import com.android.seclearning.databinding.ActivityPathDetailBinding
 import com.android.seclearning.ui.common.base.BaseActivity
+import com.android.seclearning.ui.main.home.lab.LabDetailActivity
 import com.android.seclearning.ui.main.home.personal.adapter.LessonAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,9 +53,17 @@ class PathDetailActivity : BaseActivity<ActivityPathDetailBinding>() {
     }
 
     private fun setupRecyclerView(binding: ActivityPathDetailBinding) {
-        lessonAdapter = LessonAdapter(viewModel.completed) { newCompleted ->
-            viewModel.putProgress(itemIndex = newCompleted)
-        }
+        lessonAdapter = LessonAdapter(
+            viewModel.completed,
+            onTaskCompleted = { newCompleted -> viewModel.putProgress(newCompleted) },
+            onTaskClick = { taskIndex ->
+                val intent = Intent(this, LabDetailActivity::class.java)
+                intent.putExtra("taskIndex", taskIndex)
+                intent.putExtra(EXTRA_ORIGIN, ORIGIN_PATH_DETAIL)
+                startActivity(intent)
+            }
+        )
+
 
 
         binding.rcQuiz.apply {

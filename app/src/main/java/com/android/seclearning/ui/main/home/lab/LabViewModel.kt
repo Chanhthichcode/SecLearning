@@ -33,11 +33,8 @@ class LabViewModel @Inject constructor(
     private val _count = MutableLiveData<Int>()
     val count: LiveData<Int> = _count
 
-    private val _tryHackMeCount = MutableLiveData<Int>()
-    val tryHackMeCount: LiveData<Int> = _tryHackMeCount
-
-    private val _hackTheBoxCount = MutableLiveData<Int>()
-    val hackTheBoxCount: LiveData<Int> = _hackTheBoxCount
+    private val _newLabCount = MutableLiveData<Int>()
+    val newLabCount: LiveData<Int> = _newLabCount
 
 
     private val _newLab = MutableLiveData<LabModel>()
@@ -52,9 +49,8 @@ class LabViewModel @Inject constructor(
             OpenLabFrom.BLUE_TEAM.from -> OpenLabFrom.BLUE_TEAM
             OpenLabFrom.LABTAINER.from -> OpenLabFrom.LABTAINER
             OpenLabFrom.CYBER.from -> OpenLabFrom.CYBER
-            OpenLabFrom.TRY_HACK_ME.from -> OpenLabFrom.TRY_HACK_ME
-            OpenLabFrom.HACK_THE_BOX.from -> OpenLabFrom.HACK_THE_BOX
-            else -> OpenLabFrom.PORT_SWIGGER
+            OpenLabFrom.PORT_SWIGGER.from -> OpenLabFrom.PORT_SWIGGER
+            else -> OpenLabFrom.NEW_LAB
         }
     }
 
@@ -92,6 +88,9 @@ class LabViewModel @Inject constructor(
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+            finally {
+                _loading.value = false
+            }
 
         }
     }
@@ -101,26 +100,21 @@ class LabViewModel @Inject constructor(
         viewModelScope.launch {
             _loading.value = true
             try {
-                val tryHackMeResponse = homeRepository.get().getListLab(
-                    platform = OpenLabFrom.TRY_HACK_ME.from,
-                    difficulty = null,
-                    search = null
-                )
-                _tryHackMeCount.value = tryHackMeResponse.count
 
                 val hackTheBoxResponse = homeRepository.get().getListLab(
-                    platform = OpenLabFrom.HACK_THE_BOX.from,
+                    platform = OpenLabFrom.NEW_LAB.from,
                     difficulty = null,
                     search = null
                 )
-                _hackTheBoxCount.value = hackTheBoxResponse.count
+                _newLabCount.value = hackTheBoxResponse.count
 
             } catch (e: Exception) {
                 e.printStackTrace()
-                _tryHackMeCount.value = 0
-                _hackTheBoxCount.value = 0
+                _newLabCount.value = 0
             }
-            _loading.value = false
+            finally {
+                _loading.value = false
+            }
         }
     }
 

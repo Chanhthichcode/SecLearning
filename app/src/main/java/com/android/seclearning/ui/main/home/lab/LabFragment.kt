@@ -3,9 +3,7 @@ package com.android.seclearning.ui.main.home.lab
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import androidx.activity.viewModels
 import androidx.fragment.app.activityViewModels
-import com.android.seclearning.common.utils.setSafeOnClickListener
 import com.android.seclearning.common.utils.setSafeOnClickScaleEffect
 import com.android.seclearning.data.enums.OpenLabFrom
 import com.android.seclearning.databinding.FragmentSearchBinding
@@ -52,9 +50,9 @@ class LabFragment : BaseFragment<FragmentSearchBinding>() {
                 NavigationManager.navigateToLabDetailActivity(this, OpenLabFrom.CYBER)
             }
         }
-        binding.layoutHackTheBox.setSafeOnClickScaleEffect {
+        binding.layoutNewLab.setSafeOnClickScaleEffect {
             activity?.run {
-                NavigationManager.navigateToLabDetailActivity(this, OpenLabFrom.HACK_THE_BOX)
+                NavigationManager.navigateToLabDetailActivity(this, OpenLabFrom.NEW_LAB)
             }
         }
         if (viewModel.isAdmin()) {
@@ -70,12 +68,8 @@ class LabFragment : BaseFragment<FragmentSearchBinding>() {
             binding.layoutAddLab.visibility = View.GONE
         }
 
-        viewModel.tryHackMeCount.observe(viewLifecycleOwner) { count ->
-            binding.layoutTryHackMe.visibility = if (count > 0) View.VISIBLE else View.GONE
-        }
-
-        viewModel.hackTheBoxCount.observe(viewLifecycleOwner) { count ->
-            binding.layoutHackTheBox.visibility = if (count > 0) View.VISIBLE else View.GONE
+        viewModel.newLabCount.observe(viewLifecycleOwner) { count ->
+            binding.layoutNewLab.visibility = if (count > 0) View.VISIBLE else View.GONE
         }
 
         viewModel.checkTryHackMeAndHTB()

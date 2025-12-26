@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.seclearning.Constants.EXTRA_ORIGIN
 import com.android.seclearning.Constants.OPEN_LAB_FROM
 import com.android.seclearning.R
 import com.android.seclearning.common.utils.marginWithStatusBar
@@ -20,7 +21,7 @@ import kotlin.getValue
 class LabDetailActivity : BaseActivity<ActivityLabDetailBinding>() {
 
     private val viewModel: LabViewModel by viewModels()
-    private var labAdapter : ItemLabAdapter ?= null
+    private var labAdapter: ItemLabAdapter? = null
 
     override fun makeBinding(inflater: LayoutInflater): ActivityLabDetailBinding {
         return ActivityLabDetailBinding.inflate(inflater)
@@ -34,6 +35,7 @@ class LabDetailActivity : BaseActivity<ActivityLabDetailBinding>() {
 
         viewModel.openLabFrom =
             intent.getStringExtra(OPEN_LAB_FROM).orEmpty()
+
 
         setupCategory()
         setupRecyclerView()
@@ -52,14 +54,15 @@ class LabDetailActivity : BaseActivity<ActivityLabDetailBinding>() {
             OpenLabFrom.LABTAINER -> setCategory("Labtainer")
             OpenLabFrom.PORT_SWIGGER -> setCategory("Port Swigger")
             OpenLabFrom.BLUE_TEAM -> setCategory("Blue Team Labs")
-            else -> setCategory("Cyber Defenders")
+            OpenLabFrom.CYBER -> setCategory("Cyber Defenders")
+            else -> setCategory("New Labs")
         }
     }
 
     private fun setupRecyclerView() {
         labAdapter = ItemLabAdapter().apply {
-            onCopy {
-               text -> copyText("lab", text)
+            onCopy { text ->
+                copyText("lab", text)
             }
         }
         viewBinding()?.rcLab?.apply {
@@ -71,13 +74,26 @@ class LabDetailActivity : BaseActivity<ActivityLabDetailBinding>() {
 
 
     private fun observeViewModel() {
-
         viewModel.labList.observe(this) { labs ->
-            labAdapter?.submitList(labs)
+            val origin = intent.getStringExtra(EXTRA_ORIGIN)
+
+            if (origin == "origin_path_detail") {
+                val maxPossible = if (labs.size > 20) 20 else labs.size
+                val randomSize = (6..maxPossible).random()
+
+                val randomLabs = labs.shuffled().take(randomSize)
+                labAdapter?.submitList(randomLabs)
+                viewBinding()?.tvCount?.text = "${randomLabs.size} bài Lab"
+            } else {
+                labAdapter?.submitList(labs)
+            }
         }
 
         viewModel.count.observe(this) { count ->
-            viewBinding()?.tvCount?.text = "$count bài Lab"
+            val origin = intent.getStringExtra(EXTRA_ORIGIN)
+            if (origin != "origin_path_detail") {
+                viewBinding()?.tvCount?.text = "$count bài Lab"
+            }
         }
 
         viewModel.loading.observe(this) { isLoading ->
@@ -93,7 +109,7 @@ class LabDetailActivity : BaseActivity<ActivityLabDetailBinding>() {
     fun copyText(label: String, text: String) {
         viewModel.copyText(label, text)
         this.let { ctx ->
-                Toast.makeText(ctx, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show()
+            Toast.makeText(ctx, getString(R.string.copied_to_clipboard), Toast.LENGTH_SHORT).show()
         }
     }
 }

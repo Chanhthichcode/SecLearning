@@ -13,7 +13,7 @@ const val END_POINT_GET_LAB = "/get-labs"
 const val END_POINT_GET_RESOURCE = "/get-resorce"
 const val END_POINT_GET_PROGRESS = "/progress"
 const val END_POINT_PUT_PROGRESS = "/progress/update"
-const val END_POINT_CREATE_LAB = "/post-url"
+const val END_POINT_CREATE_LAB = "/post-urlai"
 const val END_POINT_CREATE_RESOURCE = "/post-resorce"
 
 
