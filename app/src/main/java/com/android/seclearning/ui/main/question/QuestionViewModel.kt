@@ -30,11 +30,20 @@ class QuestionViewModel @Inject constructor(
     private val homeDataRepository: Lazy<HomeDataRepository>,
     private val appRepository: Lazy<AppRepository>
 ) : ViewModel() {
+
     private val _navigatePage = MutableLiveData<Int>()
     val navigatePage: LiveData<Int> get() = _navigatePage
 
+    fun goTo(position: Int) {
+        _navigatePage.value = position
+    }
+
     private val _answerType = MutableStateFlow<AnswerType?>(null)
     val answerType = _answerType.asStateFlow()
+
+    fun setOption(option: AnswerType) {
+        _answerType.value = option
+    }
 
     private val _listQuestion = MutableStateFlow<List<QuestionModel>>(emptyList())
     val listQuestion: StateFlow<List<QuestionModel>> = _listQuestion
@@ -52,19 +61,11 @@ class QuestionViewModel @Inject constructor(
 
     var domain: String = ""
 
-    fun goTo(position: Int) {
-        _navigatePage.value = position
-    }
-
-    fun setOption(option: AnswerType) {
-        _answerType.value = option
-    }
-
     fun fetchDataByAnswerType(answerType: AnswerType) {
         when (answerType) {
             AnswerType.BEGINNER -> fetchDataQuestion()
             AnswerType.IMPROVER -> fetchDataQuiz()
-            else -> {}
+            else -> Unit
         }
     }
 
@@ -72,51 +73,35 @@ class QuestionViewModel @Inject constructor(
         when (answerType) {
             AnswerType.BEGINNER -> submitAnswers()
             AnswerType.IMPROVER -> submitQuiz()
-            else -> {}
+            else -> Unit
         }
     }
 
-
     fun fetchDataQuestion() {
-        viewModelScope.launch {
-            runInIO {
-                fetchLoadingStatus.postValue(true)
-                try {
-                    val questions = homeDataRepository.get()
-                        .getListQuestions()
-                        .map { it.copy(selectedOption = -1) }
-                    _listQuestion.value = questions
-                    Logger.e("fetchQuestion", "listQuestion=$questions")
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    Logger.e("fetchQuestion", e, "fetch fetchQuestion error ${e.message}")
-                } finally {
-                    fetchLoadingStatus.postValue(false)
-                }
-            }
+        launchWithLoading {
+            val questions = homeDataRepository.get()
+                .getListQuestions()
+                .map { it.copy(selectedOption = -1) }
+
+            _listQuestion.value = questions
+            Logger.d("fetchQuestion", "listQuestion=$questions")
         }
     }
 
     fun updateAnswer(questionId: Int, optionIndex: Int) {
-        val newList = _listQuestion.value.toMutableList()
-        val index = newList.indexOfFirst { it.questionId == questionId }
-
-        if (index != -1) {
-            newList[index] = newList[index].copy(
-                selectedOption = optionIndex
-            )
-            _listQuestion.value = newList
+        _listQuestion.value = updateItem(
+            _listQuestion.value,
+            { it.questionId == questionId }
+        ) {
+            it.copy(selectedOption = optionIndex)
         }
     }
 
     fun submitAnswers() {
-        val questions = _listQuestion.value
-
-
         val request = SubmissionRequest(
             studentId = appRepository.get().getUserId(),
             studentName = appRepository.get().getUserName(),
-            answers = questions.map {
+            answers = _listQuestion.value.map {
                 AnswerRequest(
                     questionId = it.questionId,
                     optionIndex = it.selectedOption
@@ -124,65 +109,42 @@ class QuestionViewModel @Inject constructor(
             }
         )
 
-        viewModelScope.launch {
-            try {
-                fetchLoadingStatus.postValue(true)
-
-                val response = homeDataRepository.get().submitAnswers(
-                    studentId = request.studentId,
-                    studentName = request.studentName,
-                    answers = request.answers
-                )
-                Logger.e("submitAnswers", "response=$response")
-                _submissionResult.postValue(response)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            } finally {
-                fetchLoadingStatus.postValue(false)
-            }
+        launchWithLoading {
+            val response = homeDataRepository.get().submitAnswers(
+                studentId = request.studentId,
+                studentName = request.studentName,
+                answers = request.answers
+            )
+            _submissionResult.postValue(response)
         }
     }
 
     fun fetchDataQuiz() {
-        viewModelScope.launch {
-            runInIO {
-                fetchLoadingStatus.postValue(true)
-                try {
-                    val listQuiz = homeDataRepository.get()
-                        .getListQuiz(10, domain).data
-                        .map { it.copy(selectedOption = -1) }
-                    _listQuiz.value = listQuiz
-                    Logger.e("fetchQuiz", "listQuiz=$listQuiz")
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    Logger.e("fetchQuiz", e, "fetch fetchQuiz error ${e.message}")
-                } finally {
-                    fetchLoadingStatus.postValue(false)
-                }
-            }
+        launchWithLoading {
+            val quizzes = homeDataRepository.get()
+                .getListQuiz(10, domain)
+                .data
+                .map { it.copy(selectedOption = -1) }
+
+            _listQuiz.value = quizzes
+            Logger.d("fetchQuiz", "listQuiz=$quizzes")
         }
     }
 
     fun updateQuiz(quizId: Int, optionIndex: Int) {
-        val newList = _listQuiz.value.toMutableList()
-        val index = newList.indexOfFirst { it.id == quizId }
-
-        if (index != -1) {
-            newList[index] = newList[index].copy(
-                selectedOption = optionIndex
-            )
-            _listQuiz.value = newList
+        _listQuiz.value = updateItem(
+            _listQuiz.value,
+            { it.id == quizId }
+        ) {
+            it.copy(selectedOption = optionIndex)
         }
     }
 
     fun submitQuiz() {
-        val listQuiz = _listQuiz.value
-
-
         val request = QuizSubmitRequest(
             userId = appRepository.get().getUserId(),
             domain = domain,
-            submissions = listQuiz.map {
+            submissions = _listQuiz.value.map {
                 QuizAnswerRequest(
                     id = it.id,
                     userAnswer = it.selectedOption
@@ -190,21 +152,39 @@ class QuestionViewModel @Inject constructor(
             }
         )
 
+        launchWithLoading {
+            val response = homeDataRepository.get().submitQuiz(
+                userId = request.userId,
+                domain = request.domain,
+                submissions = request.submissions
+            )
+            _submissionQuiz.postValue(response)
+        }
+    }
+
+    private inline fun launchWithLoading(crossinline block: suspend () -> Unit) {
         viewModelScope.launch {
             try {
                 fetchLoadingStatus.postValue(true)
-
-                val response = homeDataRepository.get().submitQuiz(
-                    userId = request.userId,
-                    domain = request.domain,
-                    submissions = request.submissions
-                )
-                _submissionQuiz.postValue(response)
+                runInIO { block() }
             } catch (e: Exception) {
-                e.printStackTrace()
+                Logger.e("QuestionViewModel", e, e.message ?: "")
             } finally {
                 fetchLoadingStatus.postValue(false)
             }
+        }
+    }
+
+    private fun <T> updateItem(
+        list: List<T>,
+        predicate: (T) -> Boolean,
+        update: (T) -> T
+    ): List<T> {
+        val index = list.indexOfFirst(predicate)
+        if (index == -1) return list
+
+        return list.toMutableList().apply {
+            this[index] = update(this[index])
         }
     }
 }

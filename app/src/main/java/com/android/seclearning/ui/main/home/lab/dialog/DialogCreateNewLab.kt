@@ -6,49 +6,53 @@ import android.view.LayoutInflater
 import com.android.seclearning.common.utils.setSafeOnClickListener
 import com.android.seclearning.databinding.DialogCreateNewLabBinding
 import com.android.seclearning.ui.common.base.BaseDialog
-import com.android.seclearning.ui.dialog.ExitQuizDialog
 
 class DialogCreateNewLab : BaseDialog<DialogCreateNewLabBinding>() {
-    private var onClickConfirm: ((String) -> Unit)? = null
 
-    fun onClickConfirm(onClickConfirm: (String) -> Unit) {
-        this.onClickConfirm = onClickConfirm
-    }
-    override fun makeBinding(inflater: LayoutInflater): DialogCreateNewLabBinding {
-        return DialogCreateNewLabBinding.inflate(inflater)
+    private var onConfirmListener: ((String) -> Unit)? = null
+
+    fun setOnConfirmListener(listener: (String) -> Unit) {
+        onConfirmListener = listener
     }
 
-    override fun getGravityForDialog(): Int {
-        return Gravity.CENTER
-    }
+    override fun makeBinding(inflater: LayoutInflater): DialogCreateNewLabBinding =
+        DialogCreateNewLabBinding.inflate(inflater)
+
+    override fun getGravityForDialog(): Int = Gravity.CENTER
 
     override fun initViewAndData(
         saveInstanceState: Bundle?,
         binding: DialogCreateNewLabBinding
     ) {
-        this.isCancelable = true
+        isCancelable = true
+        setupClickListeners(binding)
+    }
 
-        binding.root.setSafeOnClickListener {
-            dismissDialog(ExitQuizDialog.TAG)
-        }
-        binding.btnSave.setSafeOnClickListener {
-            val text = binding.tvLink.text.toString()
-            if(text.isNotEmpty()) {
-                onClickConfirm?.invoke(text)
+    private fun setupClickListeners(binding: DialogCreateNewLabBinding) = with(binding) {
+
+        btnSave.setSafeOnClickListener {
+            val link = tvLink.text.toString().trim()
+            if (link.isNotEmpty()) {
+                onConfirmListener?.invoke(link)
+                dismiss()
             }
-            dismissDialog(ExitQuizDialog.TAG)
         }
-        binding.btnBack.setSafeOnClickListener {
-            dismissDialog(ExitQuizDialog.TAG)
+
+        btnBack.setSafeOnClickListener {
+            dismiss()
+        }
+
+        root.setSafeOnClickListener {
+            dismiss()
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        onClickConfirm = null
+        onConfirmListener = null
     }
 
     companion object {
-        const val TAG = "CreateLabDialog"
+        const val TAG = "DialogCreateNewLab"
     }
 }

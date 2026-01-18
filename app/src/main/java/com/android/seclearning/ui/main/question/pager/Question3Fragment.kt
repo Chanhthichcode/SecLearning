@@ -22,7 +22,9 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class Question3Fragment : BaseFragment<FragmentQuestion3Binding>() {
+
     private val viewModel: QuestionViewModel by activityViewModels()
+
     override fun makeBinding(inflater: LayoutInflater): FragmentQuestion3Binding {
         return FragmentQuestion3Binding.inflate(inflater)
     }
@@ -31,38 +33,63 @@ class Question3Fragment : BaseFragment<FragmentQuestion3Binding>() {
         saveInstanceState: Bundle?,
         binding: FragmentQuestion3Binding
     ) {
-        lifecycleScope.launch {
-            viewModel.answerType.collect { option ->
-                option?.let {
-                    when (it) {
-                        AnswerType.BEGINNER -> setTitle(activity?.getString(R.string.text_answer_1))
-                        AnswerType.IMPROVER -> {
-                            setTitle(activity?.getString(R.string.text_answer_3))
-                            binding.layoutChooseProfession.visible()
-                            binding.btnNext.alpha = 0.5f
-                            binding.btnNext.disable()
-                            setupProfessionSpinner()
-                        }
-
-                        AnswerType.LEARNER -> setTitle(activity?.getString(R.string.text_answer_2))
-
-                    }
-                }
-            }
-        }
-
-
-        binding.btnNext.setSafeOnClickScaleEffect {
-            val answerType = viewModel.answerType.value
-                ?: return@setSafeOnClickScaleEffect
-
-            EventHelper.post(EventClickDone(answerType))
-        }
-
+        observeAnswerType(binding)
+        setupNextButton(binding)
     }
 
-    private fun setupProfessionSpinner() {
-        val professionList = listOf(
+    private fun observeAnswerType(binding: FragmentQuestion3Binding) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.answerType.collect { type ->
+                type?.let { handleAnswerType(it, binding) }
+            }
+        }
+    }
+
+    private fun handleAnswerType(
+        type: AnswerType,
+        binding: FragmentQuestion3Binding
+    ) {
+        when (type) {
+            AnswerType.BEGINNER -> {
+                setTitle(getString(R.string.text_answer_1))
+            }
+
+            AnswerType.LEARNER -> {
+                setTitle(getString(R.string.text_answer_2))
+            }
+
+            AnswerType.IMPROVER -> {
+                setTitle(getString(R.string.text_answer_3))
+                binding.layoutChooseProfession.visible()
+                disableNextButton(binding)
+                setupProfessionSpinner(binding)
+            }
+        }
+    }
+
+    private fun setupNextButton(binding: FragmentQuestion3Binding) {
+        binding.btnNext.setSafeOnClickScaleEffect {
+            val answerType = viewModel.answerType.value ?: return@setSafeOnClickScaleEffect
+            EventHelper.post(EventClickDone(answerType))
+        }
+    }
+
+    private fun disableNextButton(binding: FragmentQuestion3Binding) {
+        binding.btnNext.apply {
+            alpha = 0.5f
+            disable()
+        }
+    }
+
+    private fun enableNextButton(binding: FragmentQuestion3Binding) {
+        binding.btnNext.apply {
+            alpha = 1f
+            enable()
+        }
+    }
+
+    private fun getProfessionList(): List<String> {
+        return listOf(
             "Chọn lộ trình",
             "SOC Analyst / Blue Team",
             "DFIR Analyst (Digital Forensics)",
@@ -70,22 +97,29 @@ class Question3Fragment : BaseFragment<FragmentQuestion3Binding>() {
             "Network Security / Red Team",
             "Web Pentester"
         )
+    }
 
-        val adapter = object : ArrayAdapter<String>(
+    private fun createSpinnerAdapter(items: List<String>): ArrayAdapter<String> {
+        return object : ArrayAdapter<String>(
             requireContext(),
             android.R.layout.simple_spinner_item,
-            professionList
+            items
         ) {
-            override fun isEnabled(position: Int): Boolean {
-                return position != 0
-            }
+            override fun isEnabled(position: Int): Boolean = position != 0
+        }.apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         }
+    }
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        viewBinding()?.spinnerCity?.adapter = adapter
+    private fun setupProfessionSpinner(binding: FragmentQuestion3Binding) {
+        val professionList = getProfessionList()
 
-        viewBinding()?.spinnerCity?.onItemSelectedListener =
+        val adapter = createSpinnerAdapter(professionList)
+        binding.spinnerCity.adapter = adapter
+
+        binding.spinnerCity.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
+
                 override fun onItemSelected(
                     parent: AdapterView<*>,
                     view: View?,
@@ -94,23 +128,16 @@ class Question3Fragment : BaseFragment<FragmentQuestion3Binding>() {
                 ) {
                     if (position == 0) return
 
-                    val selectedProfession = professionList[position]
-
-                    viewModel.domain = selectedProfession
-
-                    viewBinding()?.btnNext?.apply{
-                        alpha = 1f
-                        enable()
-                    }
+                    viewModel.domain = professionList[position]
+                    enableNextButton(binding)
                 }
 
-                override fun onNothingSelected(parent: AdapterView<*>) {}
+                override fun onNothingSelected(parent: AdapterView<*>) = Unit
             }
     }
 
-
-    private fun setTitle(string: String?) {
-        viewBinding()?.tvTitle?.text = string
+    private fun setTitle(text: String?) {
+        viewBinding()?.tvTitle?.text = text
     }
 
     class EventClickDone(val answerType: AnswerType)

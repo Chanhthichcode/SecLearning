@@ -31,10 +31,8 @@ class PathDetailActivity : BaseActivity<ActivityPathDetailBinding>() {
         saveInstanceState: Bundle?,
         binding: ActivityPathDetailBinding
     ) {
-        // ===== Status bar =====
         binding.spaceStatusBar.marginWithStatusBar()
 
-        // ===== Back =====
         binding.btnBack.setSafeOnClickListener { doFinish() }
 
         val career = intent.getStringExtra("career")
@@ -44,11 +42,9 @@ class PathDetailActivity : BaseActivity<ActivityPathDetailBinding>() {
         viewModel.career = career
         Logger.d("PathDetail", "career = ${viewModel.career}")
 
-        // ===== Setup UI =====
         setupRecyclerView(binding)
         observeData(binding)
 
-        // ===== Call API =====
         viewModel.loaDetailProgress()
     }
 
@@ -75,22 +71,17 @@ class PathDetailActivity : BaseActivity<ActivityPathDetailBinding>() {
 
     private fun observeData(binding: ActivityPathDetailBinding) {
 
-        // ===== Loading =====
         viewModel.loading.observe(this) { isLoading ->
             binding.loading.visibility =
                 if (isLoading) View.VISIBLE else View.GONE
         }
 
-        // ===== Roadmap data =====
         viewModel.roadmap.observe(this) { response ->
 
-            // Title
             binding.nameCategory.text = response.roadmap.name
 
-            // Update completed
             lessonAdapter.updateCompleted(response.completed)
 
-            // Submit list level
             lessonAdapter.submitList(response.roadmap.levels)
         }
 

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.activityViewModels
 import com.android.seclearning.R
-import com.android.seclearning.common.utils.gone
 import com.android.seclearning.common.utils.invisible
 import com.android.seclearning.common.utils.setSafeOnClickScaleEffect
 import com.android.seclearning.common.utils.visible
@@ -13,42 +12,61 @@ import com.android.seclearning.data.enums.OpenDetailFrom
 import com.android.seclearning.databinding.FragmentLearningPathBinding
 import com.android.seclearning.ui.common.base.BaseFragment
 import com.android.seclearning.ui.main.home.main.learning.LearningViewModel
-import kotlin.getValue
 
 class LearningPathFragment : BaseFragment<FragmentLearningPathBinding>() {
+
     private val viewModel: LearningViewModel by activityViewModels()
 
-    override fun makeBinding(inflater: LayoutInflater): FragmentLearningPathBinding {
-        return FragmentLearningPathBinding.inflate(inflater)
-    }
+    override fun makeBinding(inflater: LayoutInflater): FragmentLearningPathBinding =
+        FragmentLearningPathBinding.inflate(inflater)
 
     override fun initViewAndData(
         saveInstanceState: Bundle?,
         binding: FragmentLearningPathBinding
     ) {
+        with(binding) {
+            setupRoadmap(this)
+            setupObserver()
+            setupRegisterButton(this)
+        }
+    }
+
+    private fun setupRoadmap(binding: FragmentLearningPathBinding) = with(binding) {
+        hideAllRoadmaps()
+
         when (viewModel.fromDetailPackage()) {
             OpenDetailFrom.SOC -> {
-                binding.layoutSoc.root.visible()
+                layoutSoc.root.visible()
                 setTitle("Lộ trình SOC Analyst")
             }
             OpenDetailFrom.WEB -> {
-                binding.layoutWeb.root.visible()
+                layoutWeb.root.visible()
                 setTitle("Lộ trình Web Pentester")
             }
             OpenDetailFrom.NETWORK -> {
-                binding.layoutNetwork.root.visible()
+                layoutNetwork.root.visible()
                 setTitle("Lộ trình Network Security")
             }
             OpenDetailFrom.MALWARE -> {
-                binding.layoutMalware.root.visible()
+                layoutMalware.root.visible()
                 setTitle("Lộ trình Malware Analyst")
             }
             else -> {
-                binding.layoutDifr.root.visible()
+                layoutDifr.root.visible()
                 setTitle("Lộ trình Digital Forensics & Incident Response")
             }
         }
+    }
 
+    private fun FragmentLearningPathBinding.hideAllRoadmaps() {
+        layoutSoc.root.invisible()
+        layoutWeb.root.invisible()
+        layoutNetwork.root.invisible()
+        layoutMalware.root.invisible()
+        layoutDifr.root.invisible()
+    }
+
+    private fun setupObserver() {
         viewModel.registerResult.observe(viewLifecycleOwner) { result ->
             result.onSuccess {
                 setButtonState(isSelected = true)
@@ -56,19 +74,20 @@ class LearningPathFragment : BaseFragment<FragmentLearningPathBinding>() {
                 setButtonState(isSelected = false)
             }
         }
+    }
 
-
+    private fun setupRegisterButton(binding: FragmentLearningPathBinding) = with(binding) {
         if (viewModel.isAdmin()) {
-            binding.btnRegister.invisible()
+            btnRegister.invisible()
         } else {
-            binding.btnRegister.visible()
-            binding.btnRegister.setSafeOnClickScaleEffect {
+            btnRegister.visible()
+            btnRegister.setSafeOnClickScaleEffect {
                 viewModel.registerRoadmap()
             }
         }
     }
 
-    private fun setTitle(tvTitle: String){
+    private fun setTitle(tvTitle: String) {
         viewBinding()?.tvTitle?.text = tvTitle
     }
 
@@ -85,5 +104,4 @@ class LearningPathFragment : BaseFragment<FragmentLearningPathBinding>() {
             }
         }
     }
-
 }

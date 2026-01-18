@@ -21,7 +21,7 @@ class LabViewModel @Inject constructor(
     private val homeRepository: Lazy<HomeDataRepository>,
     private val appRepository: Lazy<AppRepository>,
     private val copyPasteManager: Lazy<CopyPasteManager>
-    ) : ViewModel() {
+) : ViewModel() {
 
     fun isAdmin(): Boolean = appRepository.get().isAdmin()
 
@@ -36,7 +36,6 @@ class LabViewModel @Inject constructor(
     private val _newLabCount = MutableLiveData<Int>()
     val newLabCount: LiveData<Int> = _newLabCount
 
-
     private val _newLab = MutableLiveData<LabModel>()
     val newLab: LiveData<LabModel> = _newLab
 
@@ -44,30 +43,59 @@ class LabViewModel @Inject constructor(
     val loading: LiveData<Boolean> = _loading
 
     fun fromDetailLab(): OpenLabFrom {
-        return when (openLabFrom) {
-            OpenLabFrom.SEED_LAB.from -> OpenLabFrom.SEED_LAB
-            OpenLabFrom.BLUE_TEAM.from -> OpenLabFrom.BLUE_TEAM
-            OpenLabFrom.LABTAINER.from -> OpenLabFrom.LABTAINER
-            OpenLabFrom.CYBER.from -> OpenLabFrom.CYBER
-            OpenLabFrom.PORT_SWIGGER.from -> OpenLabFrom.PORT_SWIGGER
-            else -> OpenLabFrom.NEW_LAB
-        }
+        return OpenLabFrom.values().firstOrNull {
+            it.from == openLabFrom
+        } ?: OpenLabFrom.NEW_LAB
     }
 
     fun loadLabs() {
-        viewModelScope.launch {
-            try {
-                _loading.value = true
+        launchWithLoading {
+            val response = homeRepository.get().getListLab(
+                platform = openLabFrom,
+                difficulty = null,
+                search = null
+            )
+            _count.value = response.count
+            _labList.value = response.data
+        }
+    }
 
+    fun createLab(link: String) {
+        launchWithLoading {
+            try {
+                val response = homeRepository.get().postLab(link)
+                _newLab.value = response.data
+            } catch (e: HttpException) {
+                logHttpError(e)
+            }
+        }
+    }
+
+    fun checkTryHackMeAndHTB() {
+        launchWithLoading {
+            try {
                 val response = homeRepository.get().getListLab(
-                    platform = openLabFrom,
+                    platform = OpenLabFrom.NEW_LAB.from,
                     difficulty = null,
                     search = null
                 )
+                _newLabCount.value = response.count
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _newLabCount.value = 0
+            }
+        }
+    }
 
-                _count.value = response.count
-                _labList.value = response.data
+    fun copyText(label: String, text: String) {
+        copyPasteManager.get().copyToClipboard(label, text)
+    }
 
+    private fun launchWithLoading(block: suspend () -> Unit) {
+        viewModelScope.launch {
+            _loading.value = true
+            try {
+                block()
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
@@ -76,52 +104,11 @@ class LabViewModel @Inject constructor(
         }
     }
 
-    fun createLab(link: String) {
-        viewModelScope.launch {
-            _loading.value = true
-            try {
-                val response = homeRepository.get().postLab(link)
-                _newLab.value = response.data
-            } catch (e: HttpException) {
-                val errorBody = e.response()?.errorBody()?.string()
-                Logger.e("LabViewModel", "HTTP ${e.code()} Error Body: $errorBody")
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-            finally {
-                _loading.value = false
-            }
-
-        }
-    }
-
-
-    fun checkTryHackMeAndHTB() {
-        viewModelScope.launch {
-            _loading.value = true
-            try {
-
-                val hackTheBoxResponse = homeRepository.get().getListLab(
-                    platform = OpenLabFrom.NEW_LAB.from,
-                    difficulty = null,
-                    search = null
-                )
-                _newLabCount.value = hackTheBoxResponse.count
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-                _newLabCount.value = 0
-            }
-            finally {
-                _loading.value = false
-            }
-        }
-    }
-
-
-
-    fun copyText(label: String, text: String) {
-        copyPasteManager.get().copyToClipboard(label, text)
+    private fun logHttpError(e: HttpException) {
+        val errorBody = e.response()?.errorBody()?.string()
+        Logger.e(
+            "LabViewModel",
+            "HTTP ${e.code()} Error Body: $errorBody"
+        )
     }
 }
-

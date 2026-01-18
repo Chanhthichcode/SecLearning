@@ -11,75 +11,86 @@ import com.android.seclearning.ui.NavigationManager
 import com.android.seclearning.ui.common.base.BaseFragment
 import com.android.seclearning.ui.main.home.lab.dialog.DialogCreateNewLab
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.getValue
 
 @AndroidEntryPoint
 class LabFragment : BaseFragment<FragmentSearchBinding>() {
+
     private val viewModel: LabViewModel by activityViewModels()
 
-    override fun makeBinding(inflater: LayoutInflater): FragmentSearchBinding {
-        return FragmentSearchBinding.inflate(inflater)
-    }
+    override fun makeBinding(inflater: LayoutInflater): FragmentSearchBinding =
+        FragmentSearchBinding.inflate(inflater)
 
     override fun initViewAndData(
         saveInstanceState: Bundle?,
         binding: FragmentSearchBinding
     ) {
-        binding.layoutBlueTeam.setSafeOnClickScaleEffect {
-            activity?.run {
-                NavigationManager.navigateToLabDetailActivity(this, OpenLabFrom.BLUE_TEAM)
-            }
-        }
-        binding.layoutSeedLabs.setSafeOnClickScaleEffect {
-            activity?.run {
-                NavigationManager.navigateToLabDetailActivity(this, OpenLabFrom.SEED_LAB)
-            }
-        }
-        binding.layoutLabtainer.setSafeOnClickScaleEffect {
-            activity?.run {
-                NavigationManager.navigateToLabDetailActivity(this, OpenLabFrom.LABTAINER)
-            }
-        }
-        binding.layoutPortSwigger.setSafeOnClickScaleEffect {
-            activity?.run {
-                NavigationManager.navigateToLabDetailActivity(this, OpenLabFrom.PORT_SWIGGER)
-            }
-        }
-        binding.layoutCyberDefenders.setSafeOnClickScaleEffect {
-            activity?.run {
-                NavigationManager.navigateToLabDetailActivity(this, OpenLabFrom.CYBER)
-            }
-        }
-        binding.layoutNewLab.setSafeOnClickScaleEffect {
-            activity?.run {
-                NavigationManager.navigateToLabDetailActivity(this, OpenLabFrom.NEW_LAB)
-            }
-        }
-        if (viewModel.isAdmin()) {
-            binding.layoutAddLab.visibility = View.VISIBLE
-            binding.layoutAddLab.setSafeOnClickScaleEffect {
-                val dialog = DialogCreateNewLab()
-                dialog.onClickConfirm { labLink ->
-                    viewModel.createLab(labLink)
-                }
-                dialog.show(parentFragmentManager, DialogCreateNewLab.TAG)
-            }
-        } else {
-            binding.layoutAddLab.visibility = View.GONE
-        }
-
-        viewModel.newLabCount.observe(viewLifecycleOwner) { count ->
-            binding.layoutNewLab.visibility = if (count > 0) View.VISIBLE else View.GONE
+        with(binding) {
+            setupNavigation(this)
+            setupAddLab(this)
+            setupObserver(this)
         }
 
         viewModel.checkTryHackMeAndHTB()
+    }
 
-        viewModel.newLab.observe(viewLifecycleOwner) { lab ->
+    private fun setupNavigation(binding: FragmentSearchBinding) = with(binding) {
+        layoutBlueTeam.setSafeOnClickScaleEffect {
+            navigate(OpenLabFrom.BLUE_TEAM)
+        }
+        layoutSeedLabs.setSafeOnClickScaleEffect {
+            navigate(OpenLabFrom.SEED_LAB)
+        }
+        layoutLabtainer.setSafeOnClickScaleEffect {
+            navigate(OpenLabFrom.LABTAINER)
+        }
+        layoutPortSwigger.setSafeOnClickScaleEffect {
+            navigate(OpenLabFrom.PORT_SWIGGER)
+        }
+        layoutCyberDefenders.setSafeOnClickScaleEffect {
+            navigate(OpenLabFrom.CYBER)
+        }
+        layoutNewLab.setSafeOnClickScaleEffect {
+            navigate(OpenLabFrom.NEW_LAB)
+        }
+    }
+
+    private fun navigate(openLabFrom: OpenLabFrom) {
+        activity?.let {
+            NavigationManager.navigateToLabDetailActivity(it, openLabFrom)
+        }
+    }
+
+    private fun setupAddLab(binding: FragmentSearchBinding) = with(binding) {
+        if (viewModel.isAdmin()) {
+            layoutAddLab.visibility = View.VISIBLE
+            layoutAddLab.setSafeOnClickScaleEffect {
+                showCreateLabDialog()
+            }
+        } else {
+            layoutAddLab.visibility = View.GONE
+        }
+    }
+
+    private fun showCreateLabDialog() {
+        val dialog = DialogCreateNewLab()
+        dialog.setOnConfirmListener { labLink ->
+            viewModel.createLab(labLink)
+        }
+        dialog.show(parentFragmentManager, DialogCreateNewLab.TAG)
+    }
+
+    private fun setupObserver(binding: FragmentSearchBinding) {
+        viewModel.newLabCount.observe(viewLifecycleOwner) { count ->
+            binding.layoutNewLab.visibility =
+                if (count > 0) View.VISIBLE else View.GONE
+        }
+
+        viewModel.newLab.observe(viewLifecycleOwner) {
             viewModel.checkTryHackMeAndHTB()
         }
 
-        viewModel.loading.observe(this) { isLoading ->
-            viewBinding()?.loading?.visibility =
+        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
+            binding.loading.visibility =
                 if (isLoading) View.VISIBLE else View.GONE
         }
     }

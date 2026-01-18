@@ -59,49 +59,63 @@ class LoginFragment : BaseFragment<FragmentLogInBinding>() {
     private fun setupObserver(binding: FragmentLogInBinding) {
         viewModel.loginState.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is ResultState.Loading -> {
-                    binding.tvError.apply {
-                        visible()
-                        text = "Đang tải, vui lòng đợi"
-                    }
-                    binding.loading.visible()
-                    Logger.d("LoginUI", "🔄 Loading")
-                }
+                is ResultState.Loading -> showLoading(binding)
 
-                is ResultState.Success -> {
-                    Logger.d("LoginUI", "✅ Success: ${state.data}")
-                    binding.loading.gone()
-                    binding.tvError.gone()
+                is ResultState.Success -> handleLoginSuccess(binding, state)
 
-                    DoneDialog
-                        .newInstance("Đăng nhập thành công")
-                        .show(parentFragmentManager, DoneDialog.TAG)
-
-                    appRepository().setLoggedIn()
-
-                    Handler(Looper.getMainLooper()).postDelayed({
-                    }, 2500)
-
-                    if (appRepository().isAdmin()) {
-                        NavigationManager.navigateToMain(parentFragmentManager)
-                    } else {
-                        NavigationManager.navigateToQuestion(parentFragmentManager)
-                    }
-                }
-
-                is ResultState.Error -> {
-                    Logger.e(
-                        "LoginUI",
-                        "❌ Error | code=${state.code} | message=${state.exception.message}"
-                    )
-                    binding.loading.gone()
-                    binding.tvError.apply {
-                        visible()
-                        text = state.exception.message
-                    }
-
-                }
+                is ResultState.Error -> showError(binding, state)
             }
+        }
+    }
+
+    private fun showLoading(binding: FragmentLogInBinding) {
+        Logger.d("LoginUI", "🔄 Loading")
+        binding.loading.visible()
+        binding.tvError.apply {
+            visible()
+            text = "Đang tải, vui lòng đợi"
+        }
+    }
+
+    private fun handleLoginSuccess(
+        binding: FragmentLogInBinding,
+        state: ResultState.Success<*>
+    ) {
+        Logger.d("LoginUI", "✅ Success: ${state.data}")
+
+        binding.loading.gone()
+        binding.tvError.gone()
+
+        DoneDialog
+            .newInstance("Đăng nhập thành công")
+            .show(parentFragmentManager, DoneDialog.TAG)
+
+        appRepository().setLoggedIn()
+
+        navigateAfterLogin()
+    }
+
+    private fun navigateAfterLogin() {
+        if (appRepository().isAdmin()) {
+            NavigationManager.navigateToMain(parentFragmentManager)
+        } else {
+            NavigationManager.navigateToQuestion(parentFragmentManager)
+        }
+    }
+
+    private fun showError(
+        binding: FragmentLogInBinding,
+        state: ResultState.Error
+    ) {
+        Logger.e(
+            "LoginUI",
+            "❌ Error | code=${state.code} | message=${state.exception.message}"
+        )
+
+        binding.loading.gone()
+        binding.tvError.apply {
+            visible()
+            text = state.exception.message
         }
     }
 }
